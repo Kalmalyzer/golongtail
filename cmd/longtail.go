@@ -215,7 +215,7 @@ func upSyncVersion(
 	defer hash.Dispose()
 
 	var vindex lib.Longtail_VersionIndex
-	if sourceIndexPath == nil {
+	if sourceIndexPath == nil || len(*sourceIndexPath) == 0 {
 		fileInfos, err := lib.GetFilesRecursively(fs, sourceFolderPath)
 		if err != nil {
 			return err
@@ -375,7 +375,7 @@ func downSyncVersion(
 	}
 
 	var localVersionIndex lib.Longtail_VersionIndex
-	if targetIndexPath == nil {
+	if targetIndexPath == nil || len(*targetIndexPath) == 0 {
 		fileInfos, err := lib.GetFilesRecursively(fs, targetFolderPath)
 		if err != nil {
 			return err
